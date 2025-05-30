@@ -2,8 +2,8 @@
 
 This repository presents a novel framework that leverages **Graph Neural Networks (GNNs)**—specifically **GCN** and **TGNN** architectures—to predict U.S. economic recessions. The system integrates graph-theoretic modeling of macroeconomic indicators with deep learning, offering early-warning insights into structural economic shifts.
 
-> 📘 Project Report: [`Report.pdf`](./Report.pdf)  
-> 🚀 Live Inference: Gradio App via [`Interface.py`](./Interface.py)  
+> 📘 Project Report: [`Report.pdf`]
+> 🚀 Live Inference: Gradio App via [`Interface.py`]
 
 ---
 
