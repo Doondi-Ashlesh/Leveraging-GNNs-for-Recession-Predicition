@@ -1,14 +1,13 @@
-
-#  Recession Prediction using Graph Neural Networks (GNNs)
+# Recession Prediction using Graph Neural Networks (GNNs)
 
 This repository presents a novel framework that leverages **Graph Neural Networks (GNNs)**—specifically **GCN** and **TGNN** architectures—to predict U.S. economic recessions. The system integrates graph-theoretic modeling of macroeconomic indicators with deep learning, offering early-warning insights into structural economic shifts.
 
-> Project Report: [`Report.pdf`](./Report.pdf)
-> Live Inference: Gradio App via [`Interface.py`](./Interface.py)
+> **Project Report**: [`Report.pdf`](./Report.pdf)  
+> **Live Inference**: Gradio App via [`Interface.py`](./Interface.py)
 
 ---
 
-##  Description
+## Description
 
 Traditional econometric and time-series models often miss complex nonlinear dependencies between macroeconomic indicators. In this work, we:
 
@@ -21,10 +20,10 @@ Traditional econometric and time-series models often miss complex nonlinear depe
 
 ## Dataset
 
-- Source: [Kaggle – Financial Indicators of US Recession](https://www.kaggle.com/datasets/rohanrao/financial-indicators-of-us-recession)
-- Indicators: 27 (e.g., GDP, Unemployment Rate, CPI, M2, Federal Funds Rate)
-- Labels: Monthly recession labels from NBER (1985–2023)
-- Preprocessing:
+- **Source**: [Kaggle – Financial Indicators of US Recession](https://www.kaggle.com/datasets/rohanrao/financial-indicators-of-us-recession)
+- **Indicators**: 27 (e.g., GDP, Unemployment Rate, CPI, M2, Federal Funds Rate)
+- **Labels**: Monthly recession labels from NBER (1985–2023)
+- **Preprocessing**:
   - z-score normalization
   - SMOTE-based balancing
   - Pearson correlation-based graph construction
@@ -34,122 +33,121 @@ Traditional econometric and time-series models often miss complex nonlinear depe
 ## Models
 
 ### Graph Convolutional Network (GCN)
-- Static graph
-- 4-layer GCN with dropout and mean pooling
+
+- Static graph  
+- 4-layer GCN with dropout and mean pooling  
 - Focal Loss for training
 
 ### Temporal Graph Neural Network (TGNN)
-- Dynamic graphs over time
-- GCN + GRU architecture
-- Achieved best performance:
+
+- Dynamic graphs over time  
+- GCN + GRU architecture  
+- Achieved best performance
 
 ---
+
 ## Demo: Gradio Interface
 
 We provide a Gradio-based GUI (`Interface.py`) to predict recession probabilities from new data.
 
-
-
+---
 
 ### Execution Instructions
-__________________________________________________________________________
-REQUIRED LIBRARIES AND INSTALLATION COMMANDS:
-___________________________________________________________________________
 
-1. numpy ------------------------------- !pip install numpy
-2. pandas ------------------------------ !pip install pandas
-3. matplotlib -------------------------- !pip install matplotlib
-4. seaborn ----------------------------- !pip install seaborn
-5. scikit-learn ------------------------ !pip install scikit-learn
-6. torch (PyTorch) --------------------- !pip install torch
-7. torch_geometric --------------------- !pip install torch-geometric
-8. networkx ---------------------------- !pip install networkx
-9. imbalanced-learn (SMOTE) ------------ !pip install imbalanced-learn
-10. gradio (for UI interface) ---------- !pip install gradio
-11. joblib ----------------------------- !pip install joblib
-12. tqdm (optional for progress bars) -- !pip install tqdm  ← Not explicitly imported, but useful if present
+---
 
-NOTE: PyTorch Geometric requires compatibility with your PyTorch and CUDA versions. Use their official install selector.
+### Required Libraries and Installation Commands
 
+```bash
+pip install numpy
+pip install pandas
+pip install matplotlib
+pip install seaborn
+pip install scikit-learn
+pip install torch
+pip install torch-geometric
+pip install networkx
+pip install imbalanced-learn
+pip install gradio
+pip install joblib
+pip install tqdm  # optional for progress bars
+```
 
+> **Note**: PyTorch Geometric requires compatibility with your PyTorch and CUDA versions. Use their official install selector.
 
-___________________________________________________________________________
-CODE EXECUTION
-___________________________________________________________________________
+---
 
-NOTE: Quick Demo Interface: This is a simplified script to test predictions using our trained TGNN model via a Gradio interface.  We can simply run this interface.py to see the results (predictions) instead of executing the whole source code.
+### Code Execution
 
------------------------------------
-STEPS TO RUN THE Interface.py FILE:
------------------------------------
-1. Files Required in the Same Folder: 
+#### Quick Demo Interface
 
-Make sure the below listed files are all in the same folder with Interface.py. The Interface folder already have the trained and saved files in the folder for TGNN model, In case we want to test on different models, the model architecture should be defined in the code in place of TGNN model, and all the required files: new_model_we_want_to_try.pth, scalar.pkl, feature_list.pkl, graph_edges.pt, should all be available for the particular model we want to test. 
+This is a simplified script to test predictions using our trained TGNN model via a Gradio interface. You can simply run `Interface.py` to see the results (predictions) instead of executing the whole source code.
 
--> Interface.py
+---
 
--> TGNN_SMOTE_focal_40e.pth – Model we want to test. 
+#### Steps to Run the `Interface.py` File
 
--> scaler_tgnn.pkl – StandardScaler used during training for the model
+1. **Files Required in the Same Folder**
 
--> feature_list.pkl – Feature name list for the model
+Make sure the following files are all in the same folder with `Interface.py`. The folder already contains the trained and saved files for the TGNN model. If testing a different model, define its architecture in the code and ensure all associated files are available:
 
--> graph_edges.pt – Contains edge_index and edge_weight for the model
+- `Interface.py`
+- `TGNN_SMOTE_focal_40e.pth` – Trained model file
+- `scaler_tgnn.pkl` – StandardScaler used during training
+- `feature_list.pkl` – Feature name list
+- `graph_edges.pt` – Contains edge_index and edge_weight for the model
 
---------------------------------------------------------------------------------------------------------------------
+2. **Activate Environment & Install Minimal Dependencies**
 
-2. Activate your environment and install minimal dependencies: !pip install torch numpy gradio scikit-learn joblib
+```bash
+pip install torch numpy gradio scikit-learn joblib
+```
 
-3. open Interface.py file and Run the code.
+3. **Run Interface**
 
-4. Click on the localhost link in the output terminal or open browser at http://127.0.0.1:7860
+Open `Interface.py` and execute the code.
 
-5. Enter a comma-separated string of feature values (excluding date and recession label, sample inputs for each class is provided in the sample_inputs_for_interface.txt file, refer to working demo for clearer execution walk through) and click on autofill or manually input features and scroll down and click on predict to get the output.
+4. **Access Interface**
 
-6.Output: 
+Click on the localhost link in the output terminal or open browser at:
 
-Recession / No Recession
-Probabilities for each class
+```
+http://127.0.0.1:7860
+```
 
+5. **Input Features**
 
----------------------------------------------
-STEPS TO RUN THE WHOLE ORIGINAL SOURCE CODE:
----------------------------------------------
+Enter a comma-separated string of feature values (excluding date and recession label). Sample inputs are provided in `sample_inputs_for_interface.txt`.
 
-1.Ensure the following file is in your working directory: "filled_temp_dataset.csv" (input dataset) - This file is renamed to Custom_dataset in the dataset folder, make sure to change the dataset path during execution.
+6. **Output**
 
-2.Launch Jupyter: Open GNN_pipeline.ipynb and run all cells sequentially.
+- Prediction: Recession / No Recession
+- Probabilities for each class
 
-"""
-The notebook performs:
+---
 
-Preprocessing of the dataset
+#### Steps to Run the Whole Original Source Code
 
-Graph construction and modeling
+1. **Ensure Input Dataset is Available**
 
-Training using GCN/TGNN
+Ensure the following file is in your working directory:
 
-Evaluation and metric plotting
+- `filled_temp_dataset.csv`  
+  *(Renamed to `Custom_dataset` in the `dataset` folder — update the dataset path accordingly)*
 
-And finally runs the interface block for prediction.
-""""
+2. **Launch Jupyter Notebook**
 
-If configured, outputs like confusion matrices, probabilities, and visualizations will appear in the notebook. You may optionally save models and the required files scaler.pkl, feature_list.pkl, graph_edges.pt for the current model you wanna save to further test them in the interface (modification to the interface code needed!!!).
+Open `GNN_pipeline.ipynb` and run all cells sequentially.
 
+> The notebook performs:
+> - Preprocessing of the dataset  
+> - Graph construction and modeling  
+> - Training using GCN/TGNN  
+> - Evaluation and metric plotting  
+> - Interface block for prediction
 
+If configured, outputs like confusion matrices, probabilities, and visualizations will appear in the notebook. You may optionally save models and required files (`scaler.pkl`, `feature_list.pkl`, `graph_edges.pt`) for interface testing (modifications needed in interface code).
 
-THE END :) 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+THE END
