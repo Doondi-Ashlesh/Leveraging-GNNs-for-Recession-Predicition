@@ -137,11 +137,6 @@ If configured, outputs like confusion matrices, probabilities, and visualization
 
 
 
---------------------------------------------------------------------------------------------------------------
-NOTE: A video demo of how the interface works (No audio ) & the final Report are also included in this folder.
---------------------------------------------------------------------------------------------------------------
-
-
 THE END :) 
 
 
