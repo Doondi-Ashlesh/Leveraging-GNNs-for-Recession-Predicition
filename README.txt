@@ -1,6 +1,57 @@
-INSTRUCTIONS:
+# 📉 Recession Prediction using Graph Neural Networks (GNNs)
 
-___________________________________________________________________________
+This repository presents a novel framework that leverages **Graph Neural Networks (GNNs)**—specifically **GCN** and **TGNN** architectures—to predict U.S. economic recessions. The system integrates graph-theoretic modeling of macroeconomic indicators with deep learning, offering early-warning insights into structural economic shifts.
+
+> 📘 Project Report: [`Report.pdf`](./Report.pdf)  
+> 🚀 Live Inference: Gradio App via [`Interface.py`](./Interface.py)  
+
+---
+
+## 🔍 Overview
+
+Traditional econometric and time-series models often miss complex nonlinear dependencies between macroeconomic indicators. In this work, we:
+
+- Construct dynamic graphs using Pearson correlation among 22 financial indicators.
+- Train GNN models (GCN, TGNN) to learn both spatial and temporal interdependencies.
+- Address class imbalance using SMOTE and Focal Loss.
+- Deploy a user-friendly interface for real-time inference using a trained TGNN.
+
+---
+
+## 📦 Dataset
+
+- Source: [Kaggle – Financial Indicators of US Recession](https://www.kaggle.com/datasets/rohanrao/financial-indicators-of-us-recession)
+- Indicators: 27 (e.g., GDP, Unemployment Rate, CPI, M2, Federal Funds Rate)
+- Labels: Monthly recession labels from NBER (1985–2023)
+- Preprocessing:
+  - z-score normalization
+  - SMOTE-based balancing
+  - Pearson correlation-based graph construction
+
+---
+
+## 🧠 Models
+
+### Graph Convolutional Network (GCN)
+- Static graph
+- 4-layer GCN with dropout and mean pooling
+- Focal Loss for training
+
+### Temporal Graph Neural Network (TGNN)
+- Dynamic graphs over time
+- GCN + GRU architecture
+- Achieved best performance:
+
+---
+## 🖥️ Demo: Gradio Interface
+
+We provide a Gradio-based GUI (`Interface.py`) to predict recession probabilities from new data.
+
+
+
+
+### 🚀 Launch Instructions
+__________________________________________________________________________
 REQUIRED LIBRARIES AND INSTALLATION COMMANDS:
 ___________________________________________________________________________
 
@@ -68,7 +119,8 @@ STEPS TO RUN THE WHOLE ORIGINAL SOURCE CODE:
 
 2.Launch Jupyter: Open GNN_pipeline.ipynb and run all cells sequentially.
 
-"""The notebook performs:
+"""
+The notebook performs:
 
 Preprocessing of the dataset
 
