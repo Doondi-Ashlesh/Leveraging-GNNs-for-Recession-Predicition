@@ -1,5 +1,5 @@
 
-# 📉 Recession Prediction using Graph Neural Networks (GNNs)
+#  Recession Prediction using Graph Neural Networks (GNNs)
 
 This repository presents a novel framework that leverages **Graph Neural Networks (GNNs)**—specifically **GCN** and **TGNN** architectures—to predict U.S. economic recessions. The system integrates graph-theoretic modeling of macroeconomic indicators with deep learning, offering early-warning insights into structural economic shifts.
 
@@ -8,7 +8,7 @@ This repository presents a novel framework that leverages **Graph Neural Network
 
 ---
 
-## 🔍 Overview
+##  Description
 
 Traditional econometric and time-series models often miss complex nonlinear dependencies between macroeconomic indicators. In this work, we:
 
@@ -19,7 +19,7 @@ Traditional econometric and time-series models often miss complex nonlinear depe
 
 ---
 
-## 📦 Dataset
+## Dataset
 
 - Source: [Kaggle – Financial Indicators of US Recession](https://www.kaggle.com/datasets/rohanrao/financial-indicators-of-us-recession)
 - Indicators: 27 (e.g., GDP, Unemployment Rate, CPI, M2, Federal Funds Rate)
@@ -31,7 +31,7 @@ Traditional econometric and time-series models often miss complex nonlinear depe
 
 ---
 
-## 🧠 Models
+## Models
 
 ### Graph Convolutional Network (GCN)
 - Static graph
@@ -44,14 +44,14 @@ Traditional econometric and time-series models often miss complex nonlinear depe
 - Achieved best performance:
 
 ---
-## 🖥️ Demo: Gradio Interface
+## Demo: Gradio Interface
 
 We provide a Gradio-based GUI (`Interface.py`) to predict recession probabilities from new data.
 
 
 
 
-### 🚀 Launch Instructions
+### Execution Instructions
 __________________________________________________________________________
 REQUIRED LIBRARIES AND INSTALLATION COMMANDS:
 ___________________________________________________________________________
